@@ -14,7 +14,7 @@ function App() {
       <Header />
       <NavBar />
       <Switch>
-        <Route path="/Brands">
+        <Route path="/brands">
           <Brands />
         </Route>
         <Route exact path="/">

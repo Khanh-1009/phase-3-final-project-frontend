@@ -9,13 +9,13 @@ function Brands(){
         fetch("http://localhost:9292/brands")
         .then(res => res.json())
         .then(data => setBrandList(data))
-    })
+    }, [])
 
     return (
         <div>
-            {brandList.map((brand) => {
-                <BrandLink />
-            })}
+            {brandList.map((brand) => (
+                <BrandLink key={brand.id} brand={brand}/>
+            ))}
         </div>
     )
 }
