@@ -11,9 +11,13 @@ function ProductPage() {
         .then(data => setProductList(data))
     }, [])
 
+    function handleProductSubmit(newProduct){
+        setProductList([...productList, newProduct])
+    }
+
     return (
         <main>
-            <NewProductForm />
+            <NewProductForm onProductSubmitForm={handleProductSubmit}/>
             <ul className='cards'>
                 {productList.map((product) => (
                     <ProductCard key={product.id} product={product}/>
