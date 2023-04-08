@@ -7,7 +7,6 @@ import NavBar from './NavBar';
 import Brands from './Brands';
 
 function App() {
-  const [productList, setProductList] = useState([])
 
   return (
     <div className="app">
