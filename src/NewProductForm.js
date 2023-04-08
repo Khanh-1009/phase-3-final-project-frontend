@@ -19,7 +19,7 @@ function NewProductForm({onProductSubmitForm}) {
 
   function handleSubmit(e){
     e.preventDefault()
-    fetch("http://localhost:6001/plants", {
+    fetch("http://localhost:9292/products", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
