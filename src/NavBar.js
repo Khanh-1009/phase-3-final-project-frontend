@@ -5,7 +5,7 @@ const linkStyles = {
   display: "inline-block",
   width: "80px",
   padding: "12px",
-  margin: "0 6px 6px",
+  margin: "40px 6px 6px",
   background: "#83c41f",
   textDecoration: "none",
   color: "white",
@@ -14,7 +14,7 @@ const linkStyles = {
 function NavBar() {
   
   return (
-    <div>
+    <div className="App">
       <NavLink 
       to="/" 
       exact 

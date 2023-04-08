@@ -12,7 +12,7 @@ function Brands(){
     }, [])
 
     return (
-        <div>
+        <div className="App">
             {brandList.map((brand) => (
                 <BrandLink key={brand.id} brand={brand}/>
             ))}

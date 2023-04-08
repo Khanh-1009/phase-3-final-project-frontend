@@ -13,7 +13,7 @@ code {
 } */
 
 :root {
-  --green: rgb(39, 189, 39);
+  --green: rgb(74, 152, 74);
 }
 
 * {
@@ -42,9 +42,13 @@ button.primary {
   color: white;
 }
 
+.App {
+  text-align: center;
+}
+
 .app {
   margin: 0 auto;
-  max-width: 1200px;
+  max-width: 1500px;
 }
 
 header h1 {

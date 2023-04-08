@@ -1,4 +1,4 @@
-import './App.css';
+// import './App.css';
 import React, { useState } from 'react';
 import { Route, Switch } from 'react-router-dom'
 import Header from './Header'
@@ -10,7 +10,7 @@ function App() {
   const [productList, setProductList] = useState([])
 
   return (
-    <div className="App">
+    <div className="app">
       <Header />
       <NavBar />
       <Switch>
