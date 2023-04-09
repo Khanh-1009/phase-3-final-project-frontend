@@ -15,12 +15,17 @@ function ProductPage() {
         setProductList([...productList, newProduct])
     }
 
+    function handleClickDeleteItem(deletedItem){
+        const updatedItemList = productList.filter((item) => item.id !== deletedItem.id)
+        setProductList(updatedItemList)
+    }
+
     return (
         <main>
             <NewProductForm onProductSubmitForm={handleProductSubmit}/>
             <ul className='cards'>
                 {productList.map((product) => (
-                    <ProductCard key={product.id} product={product}/>
+                    <ProductCard key={product.id} product={product} onDeleteClick={handleClickDeleteItem}/>
                 ))}
             </ul>
         </main>
