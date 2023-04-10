@@ -1,9 +1,12 @@
 import React, {useState} from "react";
+import { useParams } from "react-router-dom";
 
 function NewProductForm({onProductSubmitForm}) {
   const [productName, setProductName] = useState("")
   const [productImage, setProductImage] = useState("")
   const [productPrice, setProductPrice] = useState("")
+  
+  const params = useParams()
 
   function handleProductNameChange(e){
     setProductName(e.target.value)
@@ -28,6 +31,7 @@ function NewProductForm({onProductSubmitForm}) {
         name: productName,
         image: productImage,
         price: productPrice,
+        brand_id: params.id
       }),
     })
     .then(res => res.json())

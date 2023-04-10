@@ -1,17 +1,14 @@
 import React from "react";
-import { useParams } from "react-router-dom";
 
 function ProductCard({product, onDeleteClick}) {
   const {name, image, price} = product
 
-  const params = useParams()
-
   function handleDeleteItem(){
-    fetch(`http://localhost:9292/products/${params.id}`, {
+    fetch(`http://localhost:9292/products/${product.id}`, {
       method: "DELETE",
     })
     .then(res => res.json())
-    .then(() => console.log(product))
+    .then(() => onDeleteClick(product))
   }
 
   return (
