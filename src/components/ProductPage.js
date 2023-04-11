@@ -20,12 +20,25 @@ function ProductPage() {
         setProductList(updatedItemList)
     }
 
+    function handleChangePriceItem(newPrice){
+        const changePrice = productList.map((product) => {
+            if (product.id === newPrice.id){
+                return newPrice
+            } else {
+                return product
+            }
+        })
+        setProductList(changePrice)
+    }
+
     return (
         <main>
             <NewProductForm onProductSubmitForm={handleProductSubmit}/>
             <ul className='cards'>
                 {productList.map((product) => (
-                    <ProductCard key={product.id} product={product} onDeleteClick={handleClickDeleteItem}/>
+                    <ProductCard key={product.id} product={product} 
+                    onDeleteClick={handleClickDeleteItem}
+                    onChangeNewPrice={handleChangePriceItem}/>
                 ))}
             </ul>
         </main>

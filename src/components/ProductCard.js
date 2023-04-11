@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import EditPrice from "./EditPrice";
 
-function ProductCard({product, onDeleteClick}) {
+function ProductCard({product, onDeleteClick, onChangeNewPrice}) {
   const {name, image, price, id} = product
   const [isEditing, setIsEditing] = useState(false);
 
@@ -13,11 +13,16 @@ function ProductCard({product, onDeleteClick}) {
     .then(() => onDeleteClick(product))
   }
 
+  function handleUpdatedPrice(updatedPrice){
+    setIsEditing(false)
+    onChangeNewPrice(updatedPrice)
+  }
+
   return (
     <li className="card">
       <img src={image} alt={name} />
       <h4>{name}</h4>
-      {isEditing ? <EditPrice id={id} price={price}/> : 
+      {isEditing ? <EditPrice id={id} price={price} onUpdatePrice={handleUpdatedPrice}/> : 
         <p>Price: {price} 
           <button onClick={() => setIsEditing((isEditing) => !isEditing)}>
               <span>
