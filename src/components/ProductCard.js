@@ -1,7 +1,9 @@
-import React from "react";
+import React, {useState} from "react";
+import EditPrice from "./EditPrice";
 
 function ProductCard({product, onDeleteClick}) {
-  const {name, image, price} = product
+  const {name, image, price, id} = product
+  const [isEditing, setIsEditing] = useState(false);
 
   function handleDeleteItem(){
     fetch(`http://localhost:9292/products/${product.id}`, {
@@ -15,7 +17,14 @@ function ProductCard({product, onDeleteClick}) {
     <li className="card">
       <img src={image} alt={name} />
       <h4>{name}</h4>
-      <p>Price: {price}</p>
+      {isEditing ? <EditPrice id={id} price={price}/> : 
+        <p>Price: {price} 
+          <button onClick={() => setIsEditing((isEditing) => !isEditing)}>
+              <span>
+                ✏️
+              </span>
+          </button> 
+        </p>}
       {true ? (
         <button className="primary">In Stock</button>
       ) : (
