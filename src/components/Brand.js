@@ -7,6 +7,8 @@ function Brand(){
     const [brand, setBrand] = useState({
         products: []
     })
+
+    console.log(brand.products)
     const [productFormFlag, setProductFromFlag] = useState(false)
 
     const params = useParams()
@@ -17,16 +19,24 @@ function Brand(){
         .then(data => setBrand(data))
     }, [])
 
-    
+    function handleProductSubmit(newProduct){
+        setBrand([...brand.products, newProduct])
+    }
+
+    function handleClickDeleteItem(deletedItem){
+        const updatedItemList = brand.products.filter((item) => item.id !== deletedItem.id)
+        setBrand(updatedItemList)
+    }
 
     return (
         <main>
-            <NewProductForm />
-            <h2>Products from {brand.name}: </h2>
+            <NewProductForm onProductSubmitForm={handleProductSubmit}/>
+            <h2>Products from {brand.name}:</h2>
             <hr />
             <ul className='cards'>
             {brand.products.map((product) => (
-                <ProductCard key={product.id} product={product}/>
+                <ProductCard key={product.id} product={product}
+                onDeleteClick={handleClickDeleteItem}/>
             ))}
             </ul>
         </main>

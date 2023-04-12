@@ -2,7 +2,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom'
 import Header from './Header'
-import ProductPage from './ProductPage';
 import NavBar from './NavBar';
 import Brands from './Brands';
 import Brand from './Brand';

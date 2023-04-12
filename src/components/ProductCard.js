@@ -1,12 +1,14 @@
 import React, {useState} from "react";
 import EditPrice from "./EditPrice";
+import { useParams } from "react-router-dom";
 
 function ProductCard({product, onDeleteClick, onChangeNewPrice}) {
   const {name, image, price, id} = product
   const [isEditing, setIsEditing] = useState(false);
 
+
   function handleDeleteItem(){
-    fetch(`http://localhost:9292/products/${product.id}`, {
+    fetch(`http://localhost:9292/products/${id}`, {
       method: "DELETE",
     })
     .then(res => res.json())
