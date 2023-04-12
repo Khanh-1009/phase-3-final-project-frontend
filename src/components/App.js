@@ -21,7 +21,7 @@ function App() {
           <Brand />
         </Route>
         <Route exact path="/">
-          <ProductPage />
+          {/* <ProductPage /> */}
         </Route>
       </Switch>
 
