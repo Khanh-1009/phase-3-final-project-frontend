@@ -13,6 +13,13 @@ function Brands(){
 
     return (
         <div className="App">
+        <div className="new-product-form">
+            <h2>Brands You Love To Have</h2>
+            <form>
+                <input type="text" name="brand" placeholder="Brand Name" />
+                <button type="submit">Add Brand</button>
+            </form>
+            </div>
             {brandList.map((brand) => (
                 <BrandLink key={brand.id} brand={brand}/>
             ))}

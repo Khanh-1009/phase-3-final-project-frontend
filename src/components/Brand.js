@@ -17,6 +17,8 @@ function Brand(){
         .then(data => setBrand(data))
     }, [])
 
+    
+
     return (
         <main>
             <NewProductForm />
