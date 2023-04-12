@@ -5,6 +5,7 @@ import Header from './Header'
 import ProductPage from './ProductPage';
 import NavBar from './NavBar';
 import Brands from './Brands';
+import Brand from './Brand';
 
 function App() {
 
@@ -13,8 +14,11 @@ function App() {
       <Header />
       <NavBar />
       <Switch>
-        <Route path="/brands">
+        <Route exact path="/brands">
           <Brands />
+        </Route>
+        <Route path="/brands/:id">
+          <Brand />
         </Route>
         <Route exact path="/">
           <ProductPage />
