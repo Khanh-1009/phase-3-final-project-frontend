@@ -2,13 +2,14 @@ import React, {useState} from "react";
 import EditPrice from "./EditPrice";
 import { useParams } from "react-router-dom";
 
-function ProductCard({product, onDeleteClick, onChangeNewPrice}) {
+function ProductCard({product, brand, onDeleteClick, onChangeNewPrice}) {
   const {name, image, price, id} = product
   const [isEditing, setIsEditing] = useState(false);
 
+  const params = useParams()
 
   function handleDeleteItem(){
-    fetch(`http://localhost:9292/products/${id}`, {
+    fetch(`http://localhost:9292/products/${params.id}`, {
       method: "DELETE",
     })
     .then(res => res.json())
@@ -23,7 +24,7 @@ function ProductCard({product, onDeleteClick, onChangeNewPrice}) {
   return (
     <li className="card">
       <img src={image} alt={name} />
-      <h4>{name}</h4>
+      <h4>{brand} - {name}</h4>
       {isEditing ? <EditPrice id={id} price={price} onUpdatePrice={handleUpdatedPrice}/> : 
         <p>Price: {price} 
           <button onClick={() => setIsEditing((isEditing) => !isEditing)}>
@@ -33,7 +34,7 @@ function ProductCard({product, onDeleteClick, onChangeNewPrice}) {
           </button> 
         </p>}
       {true ? (
-        <button className="primary">In Stock</button>
+        <button className="primary">Place Order</button>
       ) : (
         <button>Out of Stock</button>
       )}
