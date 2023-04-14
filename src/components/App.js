@@ -15,13 +15,17 @@ function App() {
       .then(data => setBrands(data))
   }, [])
 
+  function handleAddNewBrand(newBrand){
+    setBrands([...brands, newBrand])
+}
+
   return (
     <div className="app">
       <Header />
       <NavBar />
       <Switch>
         <Route exact path="/brands">
-          <Brands brands={brands}/>
+          <Brands brands={brands} onAddNewBrand={handleAddNewBrand}/>
         </Route>
         <Route path="/brands/:id">
           <Brand brands={brands}/>

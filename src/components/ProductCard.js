@@ -4,22 +4,21 @@ import { useParams } from "react-router-dom";
 
 function ProductCard({product, brand, onDeleteClick, onChangeNewPrice}) {
   const {name, image, price, id} = product
-  const [isEditing, setIsEditing] = useState(false);
+  // const [isEditing, setIsEditing] = useState(false);
 
-  const params = useParams()
 
-  function handleDeleteItem(){
-    fetch(`http://localhost:9292/products/${params.id}`, {
-      method: "DELETE",
-    })
-    .then(res => res.json())
-    .then(() => onDeleteClick(product))
-  }
+  // function handleDeleteItem(){
+  //   fetch(`http://localhost:9292/products/${params.id}`, {
+  //     method: "DELETE",
+  //   })
+  //   .then(res => res.json())
+  //   .then(() => onDeleteClick(product))
+  // }
 
-  function handleUpdatedPrice(updatedPrice){
-    setIsEditing(false)
-    onChangeNewPrice(updatedPrice)
-  }
+  // function handleUpdatedPrice(updatedPrice){
+  //   setIsEditing(false)
+  //   onChangeNewPrice(updatedPrice)
+  // }
 
   return (
     <li className="card">
@@ -39,7 +38,7 @@ function ProductCard({product, brand, onDeleteClick, onChangeNewPrice}) {
         <button>Out of Stock</button>
       )}
       <br/>
-      <button className="primary" onClick={handleDeleteItem}>Not My Favorite</button>
+      <button className="primary">Not My Favorite</button>
     </li>
   );
 }

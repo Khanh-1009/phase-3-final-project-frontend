@@ -1,21 +1,10 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import BrandLink from "./BrandLink"
 
 
-function Brands({brands}){
-    const [brandList, setBrandList] = useState([])
+function Brands({brands, onAddNewBrand}){
+    //const [brandList, setBrandList] = useState([])
     const [newBrand, setNewBrand] = useState("")
-    console.log(brandList)
-
-    useEffect(() => {
-        fetch("http://localhost:9292/brands")
-        .then(res => res.json())
-        .then(data => setBrandList(data))
-    }, [])
-
-    function handleAddNewBrand(newBrand){
-        setBrandList([...brandList, newBrand])
-    }
 
     function handleChangeNewBrand(e){
         setNewBrand(e.target.value)
@@ -34,7 +23,7 @@ function Brands({brands}){
         })
         .then((res) => res.json())
         .then(newBrand => {
-            handleAddNewBrand(newBrand)
+            onAddNewBrand(newBrand)
             setNewBrand("")
         })
     }
@@ -50,7 +39,7 @@ function Brands({brands}){
                     <button type="submit">Add Brand</button>
                 </form>
             </div>
-            {brandList.map((brand) => (
+            {brands.map((brand) => (
                 <BrandLink key={brand.id} brand={brand} />
             ))}
         </div>
