@@ -1,4 +1,3 @@
-// import './App.css';
 import React, {useState, useEffect} from 'react';
 import { Route, Switch } from 'react-router-dom'
 import Header from './Header'
@@ -19,6 +18,7 @@ function App() {
     setBrands([...brands, newBrand])
 }
 
+  console.log(brands)
   return (
     <div className="app">
       <Header />

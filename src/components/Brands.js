@@ -3,7 +3,6 @@ import BrandLink from "./BrandLink"
 
 
 function Brands({brands, onAddNewBrand}){
-    //const [brandList, setBrandList] = useState([])
     const [newBrand, setNewBrand] = useState("")
 
     function handleChangeNewBrand(e){
@@ -31,7 +30,7 @@ function Brands({brands, onAddNewBrand}){
     return (
         <div className="App">
             <div className="new-product-form">
-                <h2>Brands You Love To Have</h2>
+                <h2>Add New Brand:</h2>
                 <form onSubmit={handleSubmitNewBrand}>
                     <input type="text" name="brand" placeholder="Brand Name" 
                     onChange={handleChangeNewBrand}

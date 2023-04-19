@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { useParams } from "react-router-dom";
 
-function NewProductForm() {
+function NewProductForm({onAddProduct}) {
   const [productName, setProductName] = useState("")
   const [productImage, setProductImage] = useState("")
   const [productPrice, setProductPrice] = useState("")
@@ -35,8 +35,8 @@ function NewProductForm() {
       }),
     })
     .then(res => res.json())
-    .then(newPlant => {
-      console.log(newPlant)
+    .then(newProduct => {
+      onAddProduct(newProduct)
       setProductName("")
       setProductImage("")
       setProductPrice("")

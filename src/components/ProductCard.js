@@ -2,18 +2,18 @@ import React, {useState} from "react";
 import EditPrice from "./EditPrice";
 import { useParams } from "react-router-dom";
 
-function ProductCard({product, brandName, onDeleteClick, onChangeNewPrice}) {
+function ProductCard({product, brandName, onDeleteProduct, onChangeNewPrice}) {
   const {name, image, price, id} = product
   const [isEditing, setIsEditing] = useState(false);
 
 
-  // function handleDeleteItem(){
-  //   fetch(`http://localhost:9292/products/${id}`, {
-  //     method: "DELETE",
-  //   })
-  //   .then(res => res.json())
-  //   .then(() => onDeleteClick(product))
-  // }
+  function handleDeleteItem(){
+    fetch(`http://localhost:9292/products/${id}`, {
+      method: "DELETE",
+    })
+    .then(res => res.json())
+    .then(() => onDeleteProduct(product))
+  }
 
   // function handleUpdatedPrice(updatedPrice){
   //   setIsEditing(false)
@@ -38,7 +38,7 @@ function ProductCard({product, brandName, onDeleteClick, onChangeNewPrice}) {
         <button>Out of Stock</button>
       )}
       <br/>
-      <button className="primary">Not My Favorite</button>
+      <button className="primary" onClick={handleDeleteItem}>Not My Favorite</button>
     </li>
   );
 }

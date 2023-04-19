@@ -3,30 +3,40 @@ import { useParams } from "react-router-dom";
 import ProductCard from "./ProductCard";
 import NewProductForm from "./NewProductForm";
 
-function Brand(){
-    const [brand, setBrand] = useState([])
-    const [brandName, setBrandName] = useState("")
+function Brand({brands}){
+    const [currentBrand, setCurrentBrand] = useState({products: []})
     const params = useParams()
     const brandId = parseInt(params.id)
 
-
     useEffect(() => {
-        fetch(`http://localhost:9292/brands/${brandId}`)
-        .then(res => res.json())
-        .then(data => {
-            setBrandName(data.name)
-            setBrand(data.products)})
-    }, [])
+        if (brands.length > 0){
+            const chosenBrand = brands.find(( {id}) => id === brandId)
+            setCurrentBrand(chosenBrand)
+        }
+    }, [brands])
+
+    console.log(currentBrand)
+
+
+    // function handleAddProduct(newProduct){
+    //     setProducts([...products, newProduct])
+    // }
+
+    // function handleDeleteProduct(removeProduct){
+    //     const updateAfterRemove = products.filter((product) => product.id !== removeProduct.id)
+    //     setProducts(updateAfterRemove)
+    // }
     
 
     return(
         <main>
-            <NewProductForm />
-            <h2>Products from {brandName}:</h2>
+            {/* <NewProductForm onAddProduct={handleAddProduct}/> */}
+            <h2>Products from :</h2>
             <hr />
             <ul className='cards'>
-            {brand.map((product) => (
-                <ProductCard key={product.id} product={product} brandName={brandName}/>
+            {currentBrand.products.map((product) => (
+                <ProductCard key={product.id} product={product} 
+                brandName={currentBrand.name}/>
             ))}
             </ul>
         </main>
