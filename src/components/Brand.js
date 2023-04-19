@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import ProductCard from "./ProductCard";
 import NewProductForm from "./NewProductForm";
 
-function Brand({brands}){
+function Brand({brands, setBrands}){
     const [currentBrand, setCurrentBrand] = useState({products: []})
     const params = useParams()
     const brandId = parseInt(params.id)
@@ -15,28 +15,36 @@ function Brand({brands}){
         }
     }, [brands])
 
-    console.log(currentBrand)
 
+    function handleAddProduct(newProduct){
+        const addNewProduct = [...currentBrand.products, newProduct]
+        currentBrand.products = addNewProduct
+        console.log('curr', currentBrand)
+        const filteredBrands = brands.filter(brand => brand.id !== newProduct.brand_id)
+        const revisedBrandsWithNewProduct = [...filteredBrands, currentBrand]
+        setBrands(revisedBrandsWithNewProduct)
+        setCurrentBrand(currentBrand)
+    }
 
-    // function handleAddProduct(newProduct){
-    //     setProducts([...products, newProduct])
-    // }
-
-    // function handleDeleteProduct(removeProduct){
-    //     const updateAfterRemove = products.filter((product) => product.id !== removeProduct.id)
-    //     setProducts(updateAfterRemove)
-    // }
+    function handleDeleteProduct(removeProduct){
+        const updateAfterRemove = currentBrand.products.filter((product) => product.id !== removeProduct.id)
+        currentBrand.products = updateAfterRemove
+        const filteredBrands = brands.filter(brand => brand.id !== removeProduct.brand_id)
+        const revisedBrandsAfterRemoveProduct = [...filteredBrands, currentBrand]
+        setBrands(revisedBrandsAfterRemoveProduct)
+        setCurrentBrand(currentBrand)
+    }
     
-
     return(
         <main>
-            {/* <NewProductForm onAddProduct={handleAddProduct}/> */}
-            <h2>Products from :</h2>
+            <NewProductForm onAddProduct={handleAddProduct}/>
+            <h2>Products from {currentBrand.name}:</h2>
             <hr />
             <ul className='cards'>
             {currentBrand.products.map((product) => (
                 <ProductCard key={product.id} product={product} 
-                brandName={currentBrand.name}/>
+                brandName={currentBrand.name}
+                onDeleteProduct={handleDeleteProduct}/>
             ))}
             </ul>
         </main>

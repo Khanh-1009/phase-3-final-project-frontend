@@ -11,7 +11,10 @@ function App() {
   useEffect(() => {
       fetch("http://localhost:9292/brands")
       .then(res => res.json())
-      .then(data => setBrands(data))
+      .then(data => {
+        if (data.length > 0){
+          setBrands(data)
+        }})
   }, [])
 
   function handleAddNewBrand(newBrand){
@@ -28,7 +31,7 @@ function App() {
           <Brands brands={brands} onAddNewBrand={handleAddNewBrand}/>
         </Route>
         <Route path="/brands/:id">
-          <Brand brands={brands}/>
+          <Brand brands={brands} setBrands={setBrands}/>
         </Route>
         <Route exact path="/">
           
