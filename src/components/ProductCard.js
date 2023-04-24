@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import EditPrice from "./EditPrice";
-import { useParams } from "react-router-dom";
 
 function ProductCard({product, brandName, onDeleteProduct, onChangeNewPrice}) {
   const {name, image, price, id} = product
@@ -15,16 +14,16 @@ function ProductCard({product, brandName, onDeleteProduct, onChangeNewPrice}) {
     .then(() => onDeleteProduct(product))
   }
 
-  // function handleUpdatedPrice(updatedPrice){
-  //   setIsEditing(false)
-  //   onChangeNewPrice(updatedPrice)
-  // }
+  function handleUpdatedPrice(updatedPrice){
+    setIsEditing(false)
+    onChangeNewPrice(updatedPrice)
+  }
 
   return (
     <li className="card">
       <img src={image} alt={name} />
       <h4>{brandName} - {name}</h4>
-      {isEditing ? <EditPrice id={id} price={price}/> : 
+      {isEditing ? <EditPrice id={id} price={price} onEditPrice={handleUpdatedPrice}/> : 
         <p>Price: {price} 
           <button onClick={() => setIsEditing((isEditing) => !isEditing)}>
               <span>

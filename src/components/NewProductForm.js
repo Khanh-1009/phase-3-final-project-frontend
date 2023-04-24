@@ -5,7 +5,7 @@ function NewProductForm({onAddProduct}) {
   const [productName, setProductName] = useState("")
   const [productImage, setProductImage] = useState("")
   const [productPrice, setProductPrice] = useState("")
-  
+
   const params = useParams()
 
   function handleProductNameChange(e){

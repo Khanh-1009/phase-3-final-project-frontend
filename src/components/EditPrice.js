@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-function EditPrice({id, price, onUpdatePrice}) {
+function EditPrice({id, price, onEditPrice}) {
     const [editedPrice, setEditedPrice] = useState(price)
 
     function handleChangeNewPrice(e){
@@ -19,7 +19,7 @@ function EditPrice({id, price, onUpdatePrice}) {
             }),
         })
         .then(res => res.json())
-        .then(updatedPrice => onUpdatePrice(updatedPrice))
+        .then(updatedPrice => onEditPrice(updatedPrice))
     }
 
     return (

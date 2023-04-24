@@ -11,10 +11,7 @@ function App() {
   useEffect(() => {
       fetch("http://localhost:9292/brands")
       .then(res => res.json())
-      .then(data => {
-        if (data.length > 0){
-          setBrands(data)
-        }})
+      .then(data => setBrands(data))
   }, [])
 
   function handleAddNewBrand(newBrand){

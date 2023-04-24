@@ -34,6 +34,21 @@ function Brand({brands, setBrands}){
         setBrands(revisedBrandsAfterRemoveProduct)
         setCurrentBrand(currentBrand)
     }
+
+    function handleChangePrice(updatedPrice){
+        const updatePriceOfProduct = currentBrand.products.map((product) => {
+            if (product.id === updatedPrice.id){
+                return updatedPrice
+            } else {
+                return product
+            }
+        })
+        currentBrand.products = updatePriceOfProduct
+        const filteredBrands = brands.filter(brand => brand.id !== updatedPrice.brand_id)
+        const revisedBrandsAfterEditPrice = [...filteredBrands, currentBrand]
+        setBrands(revisedBrandsAfterEditPrice)
+        setCurrentBrand(currentBrand)
+    }
     
     return(
         <main>
@@ -44,7 +59,8 @@ function Brand({brands, setBrands}){
             {currentBrand.products.map((product) => (
                 <ProductCard key={product.id} product={product} 
                 brandName={currentBrand.name}
-                onDeleteProduct={handleDeleteProduct}/>
+                onDeleteProduct={handleDeleteProduct}
+                onChangeNewPrice={handleChangePrice}/>
             ))}
             </ul>
         </main>
