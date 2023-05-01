@@ -4,6 +4,8 @@ import Header from './Header'
 import NavBar from './NavBar';
 import Brands from './Brands';
 import Brand from './Brand';
+import Home from './Home';
+import Contact from './Contact';
 
 function App() {
   const [brands, setBrands] = useState([])
@@ -30,16 +32,11 @@ function App() {
         <Route path="/brands/:id">
           <Brand brands={brands} setBrands={setBrands}/>
         </Route>
+        <Route exact path="/contact">
+          <Contact /> 
+        </Route>
         <Route exact path="/">
-          <div className='home'>
-            <h1><big>🎆Holiday Shopping Week🎆</big></h1>
-            <br />
-            <br />
-            <h2>&#127775;<i>Up To 50% Off For All Items and Lots of Gifts For New Members Who Register This Week </i>&#127873;</h2>
-            <br />
-            <br />
-            <h3>Free Standard Shipping On $50+ Orders &#128666;</h3>
-          </div>
+          <Home />
         </Route>
       </Switch>
 

@@ -35,6 +35,16 @@ function NavBar() {
       >
         Brands
       </NavLink>
+      <NavLink 
+      to="/contact" 
+      exact 
+      style={linkStyles}
+      activeStyle={{
+        background: "#558707",
+      }}
+      >
+        Contact
+      </NavLink>
     </div>
   )
 }
