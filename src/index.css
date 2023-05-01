@@ -26,6 +26,13 @@ body {
   font-family: "Playfair Display", serif;
 }
 
+.home{
+  text-align: center;
+  margin-top: 10rem;
+  padding: 2rem 1rem;
+  background-color: rgba(131, 238, 131, 0.5);
+}
+
 h2 {
   margin-bottom: 1rem;
 }
@@ -72,7 +79,7 @@ main {
 .new-product-form {
   padding: 2rem 1rem;
   margin: 2rem 0;
-  background-color: rgba(181, 250, 181, 0.5);
+  background-color: rgba(131, 238, 131, 0.5);
 }
 
 .new-product-form form {

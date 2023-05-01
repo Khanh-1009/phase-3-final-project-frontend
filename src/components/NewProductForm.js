@@ -45,7 +45,7 @@ function NewProductForm({onAddProduct}) {
 
   return (
     <div className="new-product-form">
-      <h2>Product That You Desire</h2>
+      <h2>Add New Product</h2>
       <form onSubmit={handleSubmit}>
         <input type="text" name="name" placeholder="Item name" onChange={handleProductNameChange} value={productName}/>
         <input type="text" name="image" placeholder="Image URL" onChange={handleProductImageChange} value={productImage}/>
