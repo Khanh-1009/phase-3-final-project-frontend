@@ -19,26 +19,15 @@ function Brand({brands, setBrands}){
     function handleAddProduct(newProduct){
         const addNewProduct = [...currentBrand.products, newProduct]
         currentBrand.products = addNewProduct
-        const filteredBrands = brands.map(brand => brand.id === currentBrand.brand_id ? currentBrand : brand)
-        // const filteredBrands = brands.map(brand => {
-        //     if (brand.id === currentBrand.brand_id) {
-        //         return currentBrand
-        //     } else {
-        //         return brand
-        //     }
-        // })
-        // const revisedBrandsWithNewProduct = [...filteredBrands, currentBrand]
-        setBrands(filteredBrands)
-        // setCurrentBrand(currentBrand)
+        const updatedBrandsAfterAddProduct = brands.map(brand => brand.id === currentBrand.brand_id ? currentBrand : brand)
+        setBrands(updatedBrandsAfterAddProduct)
     }
 
     function handleDeleteProduct(removeProduct){
         const updateAfterRemove = currentBrand.products.filter((product) => product.id !== removeProduct.id)
         currentBrand.products = updateAfterRemove
-        const filteredBrands = brands.filter(brand => brand.id !== removeProduct.brand_id)
-        const revisedBrandsAfterRemoveProduct = [...filteredBrands, currentBrand]
-        setBrands(revisedBrandsAfterRemoveProduct)
-        // setCurrentBrand(currentBrand)
+        const updatedBrandsAfterDeleteProduct = brands.map(brand => brand.id === currentBrand.brand_id ? currentBrand : brand)
+        setBrands(updatedBrandsAfterDeleteProduct)
     }
 
     function handleChangePrice(updatedPrice){
@@ -50,10 +39,8 @@ function Brand({brands, setBrands}){
             }
         })
         currentBrand.products = updatePriceOfProduct
-        const filteredBrands = brands.filter(brand => brand.id !== updatedPrice.brand_id)
-        const revisedBrandsAfterEditPrice = [...filteredBrands, currentBrand]
-        setBrands(revisedBrandsAfterEditPrice)
-        // setCurrentBrand(currentBrand)
+        const updateBrandsAfterChangePrice = brands.map(brand => brand.id === currentBrand.brand_id ? currentBrand : brand)
+        setBrands(updateBrandsAfterChangePrice)
     }
     
     return(

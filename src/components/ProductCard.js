@@ -37,7 +37,7 @@ function ProductCard({product, brandName, onDeleteProduct, onChangeNewPrice}) {
         <button>Out of Stock</button>
       )}
       <br/>
-      <button className="primary" onClick={handleDeleteItem}>Not My Favorite</button>
+      <button className="primary" onClick={handleDeleteItem}>Remove</button>
     </li>
   );
 }
