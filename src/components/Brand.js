@@ -15,7 +15,6 @@ function Brand({brands, setBrands}){
         }
     }, [brands])
 
-
     function handleAddProduct(newProduct){
         const addNewProduct = [...currentBrand.products, newProduct]
         currentBrand.products = addNewProduct
