@@ -31,12 +31,6 @@ function ProductCard({product, brandName, onDeleteProduct, onChangeNewPrice}) {
               </span>
           </button> 
         </p>}
-      {true ? (
-        <button className="primary">Place Order</button>
-      ) : (
-        <button>Out of Stock</button>
-      )}
-      <br/>
       <button className="primary" onClick={handleDeleteItem}>Remove</button>
     </li>
   );

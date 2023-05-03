@@ -1,4 +1,4 @@
-# Phase-3 Final Project - The SkinWish Cosmetic Website
+# Phase-3 Final Project Front-End - The SkinWish Cosmetic Website
 
 ## Learning Goals
 
