@@ -18,9 +18,8 @@ function App() {
 
   function handleAddNewBrand(newBrand){
     setBrands([...brands, newBrand])
-}
+  }
 
-  console.log(brands)
   return (
     <div className="app">
       <Header />
@@ -39,7 +38,6 @@ function App() {
           <Home />
         </Route>
       </Switch>
-
     </div>
   );
 }
